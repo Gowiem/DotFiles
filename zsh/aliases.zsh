@@ -11,9 +11,8 @@ alias tihLogcat='adb logcat com.artisan.thisishardcore:D \*:E | ~/bin/coloredlog
 
 # Basic aliases for editing config files
 alias reload!='. ~/.zshrc'
-alias zshconfig="subl ~/.zshrc"
-alias ohmyzsh="subl ~/.oh-my-zsh"
-alias aliases="subl ~/.bash_aliases"
+alias zshconfig="subl $ZSH/zsh/zshrc.symlink"
+alias aliases="subl $ZSH/zsh/aliases.zsh"
 
 # grep aliases
 # Coloring
