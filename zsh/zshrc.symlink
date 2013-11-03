@@ -4,17 +4,16 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
+export ZSH_THEME="gow"
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Workspace
 
-# Add Oh My Zsh plugins
-plugins=(git rails sublime ruby zshmarks virtualenv virtualenvwrapper)
-
 # Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm";
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 ## Source oh-my-zsh? 
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
+# source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 ## Holman/Dotfiles Defaults
 ############################
@@ -53,3 +52,5 @@ do
 done
 
 unset config_files
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
