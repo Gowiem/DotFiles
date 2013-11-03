@@ -1,3 +1,8 @@
+# Gowie Dotfiles | Forked from holamn
+
+### Installing on new systems:
+- Install [Hub](http://hub.github.com) - `brew install hub`
+
 # holman does dotfiles
 
 ## dotfiles
