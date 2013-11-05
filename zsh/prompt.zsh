@@ -15,14 +15,13 @@ eval gray='$FG[237]'
 eval orange='$FG[214]'
 eval lightBlue='$FG[075]'
 eval white='$FG[white]'
-eval red='$FG[red]'
 
 PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info` $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # Right prompt
-RPROMPT='%{$white%}% [rvm: %{$fg[red]%}`$HOME/.rvm/bin/rvm-prompt`%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
+RPROMPT='%{$white%}% [rvm: %{$FG[009]%}`$HOME/.rvm/bin/rvm-prompt`%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
 
 # Git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="(branch:"
@@ -34,7 +33,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 function git_prompt_info() {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-  echo "$FG[075](branch:$FG[098]${ref#refs/heads/}$FG[214]$(parse_git_dirty)$FG[075])"
+  echo "$FG[075](branch:$FG[035]${ref#refs/heads/}$FG[214]$(parse_git_dirty)$FG[075])"
 }
 
 
