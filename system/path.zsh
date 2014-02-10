@@ -13,6 +13,7 @@ export PATH="$PATH:/usr/local/git/bin:"
 
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin:"
+export PATH="$PATH:$HOME/.rvm/gems/:"
 
 # Add Heroku
 export PATH="$PATH:/usr/local/heroku/bin:"
