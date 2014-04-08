@@ -1,2 +1,4 @@
 #!/bin/bash
-. ~/Google\ Drive/Cla/rootkey.sh
+if [ -f ~/Google\ Drive/Cla/rootkey.sh ]; then
+    . ~/Google\ Drive/Cla/rootkey.sh
+fi
