@@ -23,6 +23,22 @@ RPS1='${return_code}'
 # Right prompt
 RPROMPT='%{$white%}% [rvm: %{$FG[009]%}`$HOME/.rvm/bin/rvm-prompt`%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
 
+## Python Virtualenv Hooks
+###########################
+# These need to be copied into the ~/.virtualenvs postactivate/postdeactive scripts
+# TODO: Should have a script that does the above if the files are around
+
+# postactivate
+_OLD_RPROMPT="$RPROMPT"
+RPROMPT="%{${fg_bold[white]}%}[env: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%"
+
+#postdeactivate
+RPROMPT="$_OLD_RPROMPT"
+
+
+## Git Hooks
+#############
+
 # Git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="(branch:"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
