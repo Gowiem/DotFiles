@@ -2,6 +2,10 @@
 ###############
 .sass-cache
 
+# Global XCode #
+################
+*.xcuserdatad/
+
 # Other Source Control #
 ########################
 .svn
