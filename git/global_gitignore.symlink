@@ -2,6 +2,12 @@
 ###############
 .sass-cache
 
+# JS Packages/Files #
+#####################
+node_modules/
+bower_components/
+*.bundle.js
+
 # Global XCode #
 ################
 *.xcuserdatad/
