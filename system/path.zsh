@@ -26,3 +26,9 @@ export PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin/:"
 
 # Mappath
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+# JAVA
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+
+# Gradle
+export PATH="$PATH:/Applications/Android Studio.app/Contents/gradle/gradle-2.8/bin/"
