@@ -1,4 +1,6 @@
 
+alias ap=ansible-playbook
+
 # I like clearing the terminal..
 alias c='clear'
 alias cl='clear'

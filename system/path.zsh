@@ -5,7 +5,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:./bin:
 export PATH="$ZSH/bin:$PATH"
 
 # Add Android tools
-export ANDROID_HOME=/opt/adt-bundle-mac-x86_64-20130219/sdk
+export ANDROID_HOME=~/Workspace/build-tools/android-sdk-macosx/
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 
 # Add git
