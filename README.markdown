@@ -1,7 +1,12 @@
 # Gowie Dotfiles | Forked from holman/dotfiles
 
-### Installing on new systems:
+### Installing on a new Mac:
+- Install [Homebrew](https://brew.sh) - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+- Install [Zsh](http://www.zsh.org/) - `brew install zsh`
 - Install [Hub](http://hub.github.com) - `brew install hub`
+- Install [rvm](https://rvm.io/) - `curl -sSL https://get.rvm.io | bash`
+- Setup Zsh as Default Shell - `echo "$(which zsh)" >> /etc/shell && chsh -s $(which zsh)`
+- Install via `script/bootstrap`
 
 ### Mac Utils
 - Remember on new mac systems to do 'touch ~/.hushlogin' for [faster ttyl startup](http://tumblr.mobocracy.net/post/9078264612/iterm2-oh-my-zsh-speed)
