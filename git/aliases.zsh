@@ -7,6 +7,7 @@ then
 fi
 
 # The rest of my fun git aliases
+alias g='git'
 alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gp='git push origin HEAD'
@@ -22,3 +23,4 @@ alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
 # Gowie git aliases
 alias gpom='git push origin master'
 alias gplod='git pull origin DEVELOPMENT'
+alias gpu='git pu'

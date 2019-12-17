@@ -2,15 +2,21 @@
 ###############
 .sass-cache
 
+# Editor Configs #
+##################
+.idea/
+
 # JS Packages/Files #
 #####################
 node_modules/
+./node_modules/
 bower_components/
 *.bundle.js
 
 # Global XCode #
 ################
 *.xcuserdatad/
+xcuserdata/*
 
 # Other Source Control #
 ########################
@@ -52,4 +58,10 @@ bower_components/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+# Ruby Config Files #
+#####################
+.byebug_history
+.ruby-gemset
 .rvmrc
