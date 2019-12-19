@@ -4,9 +4,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:./bin:
 # Add this dotfiles repo bin folder to the path
 export PATH="$ZSH/bin:$PATH"
 
-# Add Android tools
-export ANDROID_HOME=~/Workspace/build-tools/android-sdk-macosx/
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+export PATH="~/bin:$PATH"
 
 # Add git
 export PATH="$PATH:/usr/local/git/bin:"
@@ -14,6 +12,9 @@ export PATH="$PATH:/usr/local/git/bin:"
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin:"
 export PATH="$PATH:$HOME/.rvm/gems/:"
+
+# Add mports
+export PATH="$PATH:/opt/local/bin:/opt/local/sbin:"
 
 # Add Heroku
 export PATH="$PATH:/usr/local/heroku/bin:"
@@ -28,7 +29,4 @@ export PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin/:"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
-
-# Gradle
-export PATH="$PATH:/Applications/Android Studio.app/Contents/gradle/gradle-2.8/bin/"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home
