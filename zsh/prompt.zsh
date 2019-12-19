@@ -1,10 +1,10 @@
 autoload colors && colors
-## Author: Matt Gowie 
+## Author: Matt Gowie
 ## Adapted from Andy Fleming's https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
 ## Updated: Sun Nov. 3rd 2013
 ##############################
 
-## I just hacked this together pretty badly after migrating away from oh-my-zsh, 
+## I just hacked this together pretty badly after migrating away from oh-my-zsh,
 ## so it not kinda sucks. Works though!
 
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
@@ -21,7 +21,7 @@ PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # Right prompt
-RPROMPT='%{$white%}% [rvm: %{$FG[009]%}`$HOME/.rvm/bin/rvm-prompt`%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
+RPROMPT='%{$white%}% [node: %{$FG[070]%}`node --version`%{$reset_color%}%{$white%}] [rvm: %{$FG[009]%}`$HOME/.rvm/bin/rvm-prompt`%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
 
 ## Python Virtualenv Hooks
 ###########################
