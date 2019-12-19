@@ -1,5 +1,8 @@
 # Only set this if we haven't set $EDITOR up somewhere else previously.
 if [[ "$EDITOR" == "" ]] ; then
-  # Use sublime for my editor.
-  export EDITOR='subl'
+  # Use atom for my editor.
+  export EDITOR='atom'
+  export KUBE_EDITOR="vim"
 fi
+
+source ~/Workspace/Cloned/aws-mfa-script/alias.sh
