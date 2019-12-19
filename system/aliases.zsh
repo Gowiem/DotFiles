@@ -8,3 +8,17 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+alias tf='terraform'
+alias tfyolo='terraform apply -auto-approve'
+alias tfplan='tf plan -out=run.plan'
+
+alias d='docker'
+alias dcomp='docker-compose'
+alias dcomp.dev='docker-compose -f docker-compose.dev.yml'
+
+alias docker_rm_images='docker rmi -f $(docker images -f dangling=true -q)'
+alias docker_rm_containers='docker rm $(docker ps -a -f status=exited -q)'
+alias docker_rm_allthethings='docker rmi -f $(docker images -q) && docker rm $(docker ps -a -q)'
+
+alias kube='kubectl'
