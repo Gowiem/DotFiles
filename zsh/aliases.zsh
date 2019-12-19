@@ -5,16 +5,10 @@ alias ap=ansible-playbook
 alias c='clear'
 alias cl='clear'
 
-# emacs alias for terminal
-alias Emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-
-# This is Hardcore Logcat
-alias tihLogcat='adb logcat com.artisan.thisishardcore:D \*:E | ~/bin/coloredlogcat.py'
-
 # Basic aliases for editing config files
 alias reload!='. ~/.zshrc'
-alias zshconfig="subl $ZSH/zsh/zshrc.symlink"
-alias aliases="subl $ZSH/zsh/aliases.zsh"
+alias zshconfig="atom $ZSH/zsh/zshrc.symlink"
+alias aliases="atom $ZSH/zsh/aliases.zsh"
 
 # grep aliases
 # Coloring
