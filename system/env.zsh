@@ -5,4 +5,6 @@ if [[ "$EDITOR" == "" ]] ; then
   export KUBE_EDITOR="vim"
 fi
 
+export ZSH_DOTENV_PROMPT="false"
+
 source ~/Workspace/Cloned/aws-mfa-script/alias.sh
