@@ -12,6 +12,7 @@ fi
 alias tf='terraform'
 alias tfyolo='terraform apply -auto-approve'
 alias tfplan='tf plan -out=run.plan'
+alias tfrun='tf apply run.plan'
 
 alias d='docker'
 alias dcomp='docker-compose'
