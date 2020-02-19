@@ -22,9 +22,6 @@ export PATH="$PATH:/usr/local/heroku/bin:"
 # Add Node
 export PATH="$PATH:/usr/local/lib/node_modules:"
 
-# Add postgres
-export PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin/:"
-
 # Mappath
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
