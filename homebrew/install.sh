@@ -13,6 +13,16 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark
+brew install \
+     grc \
+     coreutils \
+     spark \
+     pyenv \
+     tfenv \
+     nvm \
+     ansible \
+     awscli \
+     jq \
+     postgresql
 
 exit 0
