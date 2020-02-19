@@ -1,6 +1,8 @@
 ## Gowie Zsh Config
 ####################
 
+plugins=(dotenv)
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
