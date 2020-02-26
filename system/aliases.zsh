@@ -9,12 +9,18 @@ then
   alias la='gls -A --color'
 fi
 
+alias aliases='atom ~/.dotfiles/system/aliases.zsh'
+alias dotfiles='atom ~/.dotfiles'
+
 alias tf='terraform'
 alias tfyolo='terraform apply -auto-approve'
 alias tfplan='tf plan -out=run.plan'
 alias tfrun='tf apply run.plan'
 
 alias d='docker'
+alias drun='docker run -it --rm'
+alias dexec='docker exec -it'
+
 alias dcomp='docker-compose'
 alias dcomp.dev='docker-compose -f docker-compose.dev.yml'
 
