@@ -18,9 +18,18 @@ bower_components/
 *.xcuserdatad/
 xcuserdata/*
 
+# ENV Files #
+#############
+.env
+
 # Other Source Control #
 ########################
 .svn
+
+# Terraform #
+#############
+*.plan
+run.plan
 
 # Compiled source #
 ###################
