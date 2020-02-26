@@ -1,4 +1,3 @@
-
 alias ap=ansible-playbook
 
 # I like clearing the terminal..
@@ -9,6 +8,7 @@ alias cl='clear'
 alias reload!='. ~/.zshrc'
 alias zshconfig="atom $ZSH/zsh/zshrc.symlink"
 alias aliases="atom $ZSH/zsh/aliases.zsh"
+alias aws_creds="atom ~/.aws/credentials"
 
 # grep aliases
 # Coloring
@@ -38,3 +38,8 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+
+alias av='aws-vault'
+
+# Project specific aliases
+alias avnk='aws-vault exec nk-terraform --'
