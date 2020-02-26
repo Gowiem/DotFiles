@@ -20,12 +20,8 @@ PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info` $FG[105]%(!.#.»)%{$reset_
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
-NODE_VERSION=$(node --version)
-PYTHON_VERSION=$(python -V 2>&1 | sed 's/.* \([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/')
-RUBY_VERSION=$($HOME/.rvm/bin/rvm-prompt 2>&1 | sed 's/ruby-\([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/')
-
 # Right prompt
-RPROMPT='%{$white%}% [py: %{$FG[037]%}v$PYTHON_VERSION%{$reset_color%}%{$white%}] [node: %{$FG[070]%}$NODE_VERSION%{$reset_color%}%{$white%}] [ruby: %{$FG[009]%}v$RUBY_VERSION%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
+RPROMPT='%{$white%}% [py: %{$FG[037]%}v$(python -V 2>&1 | sed "s/.* \([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] [node: %{$FG[070]%}$(node --version)%{$reset_color%}%{$white%}] [ruby: %{$FG[009]%}v$($HOME/.rvm/bin/rvm-prompt 2>&1 | sed "s/ruby-\([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
 
 ## Python Virtualenv Hooks
 ###########################
