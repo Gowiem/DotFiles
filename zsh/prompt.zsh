@@ -21,7 +21,7 @@ PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # Right prompt
-RPROMPT='%{$white%}% [py: %{$FG[037]%}v$(python -V 2>&1 | sed "s/.* \([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] [node: %{$FG[070]%}$(node --version)%{$reset_color%}%{$white%}] [ruby: %{$FG[009]%}v$($HOME/.rvm/bin/rvm-prompt 2>&1 | sed "s/ruby-\([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
+RPROMPT='`terraform_prompt_info` %{$white%}% [py: %{$FG[037]%}v$(python -V 2>&1 | sed "s/.* \([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] [node: %{$FG[070]%}$(node --version)%{$reset_color%}%{$white%}] [ruby: %{$FG[009]%}v$($HOME/.rvm/bin/rvm-prompt 2>&1 | sed "s/ruby-\([0-9]\).\([0-9]\).\([0-9]\)/\1.\2.\3/")%{$reset_color%}%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%'
 
 ## Python Virtualenv Hooks
 ###########################
@@ -50,6 +50,15 @@ function git_prompt_info() {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
   echo "$FG[075](branch:$FG[035]${ref#refs/heads/}$FG[214]$(parse_git_dirty)$FG[075])"
+}
+
+function terraform_prompt_info() {
+  if [ -d ".terraform/" ]; then
+    workspace=$( terraform workspace show ) || return
+    echo "$FG[white][tf: $FG[129]${workspace}%{$reset_color%}$FG[white]]"
+  else
+    return
+  fi
 }
 
 
