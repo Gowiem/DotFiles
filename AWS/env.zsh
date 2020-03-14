@@ -1,0 +1,2 @@
+export AWS_VAULT_PROMPT=osascript
+export AWS_SESSION_TOKEN_TTL=4
