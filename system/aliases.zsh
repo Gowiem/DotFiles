@@ -24,4 +24,6 @@ alias docker_rm_containers='docker rm $(docker ps -a -f status=exited -q)'
 alias docker_rm_dangling='docker rmi -f $(docker images -f dangling=true -q) && docker rm $(docker ps -a -f status=exited -q)'
 alias docker_rm_allthethings='docker rmi -f $(docker images -q) && docker rm $(docker ps -a -q)'
 
+alias lzd='lazydocker'
+
 alias kube='kubectl'

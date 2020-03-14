@@ -38,8 +38,3 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
-
-alias av='aws-vault'
-
-# Project specific aliases
-alias avnk='aws-vault exec nk-terraform --'
