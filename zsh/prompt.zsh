@@ -53,11 +53,18 @@ function git_prompt_info() {
 }
 
 function terraform_prompt_info() {
+  version=$( terraform --version 2>&1 | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2 )
+
   if [ -d ".terraform/" ]; then
-    workspace=$( terraform workspace show ) || return
-    echo "$FG[white][tf: $FG[129]${workspace}%{$reset_color%}$FG[white]]"
+    workspace=$( terraform workspace show )
   else
-    return
+    workspace="not_found"
+  fi
+
+  if [[ "$workspace" == "not_found" ]]; then
+    echo "$FG[white][tf: $FG[127] v${version}%{$reset_color%}$FG[white]]"
+  else
+    echo "$FG[white][tf: $FG[127] v${version}@${workspace}%{$reset_color%}$FG[white]]"
   fi
 }
 
