@@ -1,8 +1,6 @@
 ## Gowie Zsh Config
 ####################
 
-plugins=(dotenv)
-
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -14,7 +12,7 @@ export PROJECTS=~/Workspace
 # Load RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-## Source oh-my-zsh? 
+## Source oh-my-zsh?
 # source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 ## Holman/Dotfiles Defaults
