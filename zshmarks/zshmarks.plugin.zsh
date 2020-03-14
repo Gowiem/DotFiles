@@ -30,7 +30,7 @@ function bookmark() {
 	fi
 }
 
-function go() {
+function g() {
 	bookmark_name=$1
 	bookmark="$(grep "|$bookmark_name$" "$bookmarks_file")"
 	if [[ -z $bookmark ]]; then
