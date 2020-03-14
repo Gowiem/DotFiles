@@ -1,3 +1,7 @@
+# Custom Files #
+################
+.localrc
+
 # Cache Files #
 ###############
 .sass-cache
@@ -28,6 +32,7 @@ xcuserdata/*
 
 # Terraform #
 #############
+secrets.tfvars
 *.plan
 run.plan
 
