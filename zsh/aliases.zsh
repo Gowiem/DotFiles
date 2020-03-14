@@ -8,7 +8,7 @@ alias cl='clear'
 alias reload!='. ~/.zshrc'
 alias zshconfig="atom $ZSH/zsh/zshrc.symlink"
 alias aliases="atom $ZSH/zsh/aliases.zsh"
-alias aws_creds="atom ~/.aws/credentials"
+
 
 # grep aliases
 # Coloring
