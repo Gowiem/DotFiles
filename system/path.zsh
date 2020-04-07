@@ -27,6 +27,3 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 export PATH="/Users/gowiem/.pyenv/shims:$PATH"
 export PATH="/Users/gowiem/.local/bin:${PATH}"
-
-# JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home
