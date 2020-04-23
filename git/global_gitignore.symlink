@@ -35,6 +35,8 @@ xcuserdata/*
 secrets.tfvars
 *.plan
 run.plan
+terraform.tfstate.d/
+.terraform/
 
 # Compiled source #
 ###################
