@@ -13,5 +13,7 @@ function tfplan() {
     fi
 
     terraform plan -out=run.plan $WORKSPACE_ARG $SECRETS_ARG $*
+  else
+    echo "You're not in a terraform directory!"
   fi
 }
