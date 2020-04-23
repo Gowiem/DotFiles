@@ -4,3 +4,5 @@ if [[ "$EDITOR" == "" ]] ; then
   export EDITOR='atom'
   export KUBE_EDITOR="vim"
 fi
+
+export PROJECTS=~/Workspace
