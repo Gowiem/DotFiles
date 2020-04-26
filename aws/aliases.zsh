@@ -1,4 +1,5 @@
 alias aws_creds="atom ~/.aws/credentials"
+alias aws_config="atom ~/.aws/config"
 
 # AWS Vault
 alias av='aws-vault'
