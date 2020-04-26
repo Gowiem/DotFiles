@@ -20,5 +20,15 @@ function avprof() {
 }
 
 function aws_ecr_login() {
-  eval $(aws ecr get-login --region us-east-1 --no-include-email)
+  local region=$1
+  if [[ "$region" != "" ]]; then
+    echo "Running ECR Login with supplied region: $region"
+    eval $(aws ecr get-login --region $region --no-include-email)
+  elif [[ $AWS_DEFAULT_REGION != "" ]]; then
+    echo "Running ECR Login with AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION"
+    eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+  else
+    echo "Running ECR Login with default region: us-west-2"
+    eval $(aws ecr get-login --region us-west-2 --no-include-email)
+  fi
 }
