@@ -25,6 +25,7 @@ xcuserdata/*
 # ENV Files #
 #############
 .env
+.envrc
 
 # Other Source Control #
 ########################
