@@ -1,5 +1,5 @@
 function aws_reset_session() {
-  for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN VAULT_PROFILE AWS_VAULT AWS_DEFAULT_REGION AWS_REGION AWS_SECURITY_TOKEN AWS_SESSION_EXPIRATION
+  for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN VAULT_PROFILE AWS_VAULT AWS_DEFAULT_REGION AWS_REGION AWS_SECURITY_TOKEN AWS_SESSION_EXPIRATION AWS_PROFILE
   do
     unset ${var}
   done
@@ -14,6 +14,7 @@ function aws_print_creds() {
 function avprof() {
   # Set VAULT_PROFILE which is used in my Right Prompt
   export VAULT_PROFILE=$1
+  export AWS_PROFILE=$1
 
   # Exec the given profile and include the new AWS Creds into the current shell session
   source <(aws-vault exec $VAULT_PROFILE --no-session -- sh -c 'export -p')
