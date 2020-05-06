@@ -51,3 +51,5 @@ function g() {
 function showmarks() {
 	cat ~/.bookmarks | awk '{ printf "%-40s%-40s%s\n",$1,$2,$3}' FS=\|
 }
+
+alias editmarks="atom $bookmarks_file"
