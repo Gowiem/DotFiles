@@ -1,1 +1,1 @@
-export GOPATH=~/Workspace/go_workspace
+export GOPATH=~/Workspace/go
