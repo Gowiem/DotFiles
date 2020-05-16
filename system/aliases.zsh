@@ -9,8 +9,10 @@ then
   alias la='gls -A --color'
 fi
 
-alias aliases='atom ~/.dotfiles/system/aliases.zsh'
-alias dotfiles='atom ~/.dotfiles'
+alias aliases="edit ~/.dotfiles/system/aliases.zsh"
+alias dotfiles="edit ~/.dotfiles"
+
+alias edit='code'
 
 alias d='docker'
 alias drun='docker run -it --rm'

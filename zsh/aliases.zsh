@@ -6,8 +6,8 @@ alias cl='clear'
 
 # Basic aliases for editing config files
 alias reload!='. ~/.zshrc'
-alias zshconfig="atom $ZSH/zsh/zshrc.symlink"
-alias aliases="atom $ZSH/zsh/aliases.zsh"
+alias zshconfig="edit $ZSH/zsh/zshrc.symlink"
+alias aliases="edit $ZSH/zsh/aliases.zsh"
 
 
 # grep aliases
