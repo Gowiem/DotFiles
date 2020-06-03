@@ -13,17 +13,10 @@ export PATH="$PATH:/usr/local/git/bin:"
 export PATH="$PATH:$HOME/.rvm/bin:"
 export PATH="$PATH:$HOME/.rvm/gems/:"
 
-# Add mports
-export PATH="$PATH:/opt/local/bin:/opt/local/sbin:"
-
-# Add Heroku
-export PATH="$PATH:/usr/local/heroku/bin:"
-
 # Add Node
 export PATH="$PATH:/usr/local/lib/node_modules:"
 
 # Mappath
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-export PATH="/Users/gowiem/.pyenv/shims:$PATH"
 export PATH="/Users/gowiem/.local/bin:${PATH}"
