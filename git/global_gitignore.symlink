@@ -17,6 +17,10 @@ node_modules/
 bower_components/
 *.bundle.js
 
+# Golang #
+##########
+.gopath
+
 # Global XCode #
 ################
 *.xcuserdatad/
@@ -38,6 +42,8 @@ secrets.tfvars
 run.plan
 terraform.tfstate.d/
 .terraform/
+*.tfstate
+*.tfstate*
 
 # Compiled source #
 ###################
