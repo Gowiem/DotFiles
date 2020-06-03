@@ -16,7 +16,7 @@ function avprof() {
   $(aws_reset_session)
 
   # Exec the given profile and include the new AWS Creds into the current shell session
-  source <(aws-vault exec $VAULT_PROFILE --no-session -- sh -c 'export -p')
+  source <(aws-vault exec $1 --no-session -- sh -c 'export -p')
 
   # Set VAULT_PROFILE which is used in my Right Prompt
   export VAULT_PROFILE=$1
