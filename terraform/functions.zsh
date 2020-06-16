@@ -1,21 +1,36 @@
-function tfplan() {
-  if [[ -d "./.terraform/" ]]; then
+function tf_with_vars() {
+  local cmd=$1
+  shift # Removes arg 1 from arg list
 
-    workspace_name=$(terraform workspace show)
-    if [[ -f "tfvars/${workspace_name}.tfvars" ]]; then
-      echo "Running terraform plan with ${workspace_name}.tfvars..."
-      WORKSPACE_ARG="-var-file=tfvars/${workspace_name}.tfvars"
-    fi
+  if [[ ! -d "./.terraform/" ]]; then
+    echo "You're not in a terraform directory!"
+    exit 1
+  fi
 
-    if [[ -f "tfvars/secrets.tfvars" ]]; then
-      echo "Running terraform plan with secrets.tfvars..."
-      SECRETS_ARG="-var-file=tfvars/secrets.tfvars"
-    fi
+  local workspace_name=$(terraform workspace show)
+  if [[ -f "tfvars/${workspace_name}.tfvars" ]]; then
+    echo "Running terraform plan with ${workspace_name}.tfvars..."
+    WORKSPACE_ARG="-var-file=tfvars/${workspace_name}.tfvars"
+  fi
 
+  if [[ -f "tfvars/secrets.tfvars" ]]; then
+    echo "Running terraform plan with secrets.tfvars..."
+    SECRETS_ARG="-var-file=tfvars/secrets.tfvars"
+  fi
+
+  if [[ "$cmd" == "plan" ]]; then
     terraform plan -out=run.plan $WORKSPACE_ARG $SECRETS_ARG $*
   else
-    echo "You're not in a terraform directory!"
+    terraform $cmd $WORKSPACE_ARG $SECRETS_ARG $*
   fi
+}
+
+function tfplan() {
+  tf_with_vars plan
+}
+
+function tfrefresh() {
+  tf_with_vars refresh
 }
 
 function tf_make_module() {
