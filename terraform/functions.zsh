@@ -49,5 +49,5 @@ function tf_make_module() {
 }
 
 function install_tf_commit_hook() {
-  cat ~/.dotfiles/terraform/terraform-pre-commit-hook.yml >.pre-commit-config.yml
+  cat ~/.dotfiles/terraform/terraform-pre-commit-hook.yaml >.pre-commit-config.yaml
 }
