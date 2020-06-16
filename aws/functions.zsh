@@ -13,6 +13,8 @@ function aws_print_creds() {
 
 function avprof() {
   # Reset AWS Session in case there already is one.
+  unset VAULT_PROFILE
+  unset AWS_PROFILE
   $(aws_reset_session)
 
   # Exec the given profile and include the new AWS Creds into the current shell session
