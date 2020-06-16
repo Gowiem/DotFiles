@@ -32,3 +32,7 @@ function tf_make_module() {
   echo "# ${module_name}.tf\n" >"./modules/${module_name}/outputs.tf"
   echo "Successfully created ${module_name} module!"
 }
+
+function install_tf_commit_hook() {
+  cat ~/.dotfiles/terraform/terraform-pre-commit-hook.yml >.pre-commit-config.yml
+}
