@@ -26,15 +26,21 @@ function avprof() {
 }
 
 function aws_ecr_login() {
-  local region=$1
-  if [[ "$region" != "" ]]; then
-    echo "Running ECR Login with supplied region: $region"
-    eval $(aws ecr get-login --region $region --no-include-email)
+  local region=""
+  local account_id=$(aws_info | jq -r .Account)
+
+  if [[ "$1" != "" ]]; then
+    region=$1
   elif [[ $AWS_DEFAULT_REGION != "" ]]; then
-    echo "Running ECR Login with AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION"
-    eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+    region=$AWS_DEFAULT_REGION
   else
-    echo "Running ECR Login with default region: us-west-2"
-    eval $(aws ecr get-login --region us-west-2 --no-include-email)
+    region="us-west-2"
   fi
+
+  echo "Running ECR Login with region: $region"
+
+  aws ecr get-login-password --region $region \
+    | docker login \
+             --username AWS \
+             --password-stdin $account_id.dkr.ecr.$region.amazonaws.com
 }
