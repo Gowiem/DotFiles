@@ -4,7 +4,7 @@ function tf_with_vars() {
 
   if [[ ! -d "./.terraform/" ]]; then
     echo "You're not in a terraform directory!"
-    exit 1
+    return
   fi
 
   local workspace_name=$(terraform workspace show)
@@ -26,11 +26,11 @@ function tf_with_vars() {
 }
 
 function tfplan() {
-  tf_with_vars plan
+  tf_with_vars plan $*
 }
 
 function tfrefresh() {
-  tf_with_vars refresh
+  tf_with_vars refresh $*
 }
 
 function tf_make_module() {
@@ -38,7 +38,7 @@ function tf_make_module() {
 
   if [[ ! -d "./.terraform/" ]]; then
     echo "You're not in a terraform directory!"
-    exit 1
+    return
   fi
 
   mkdir -p "./modules/${module_name}"
@@ -48,6 +48,16 @@ function tf_make_module() {
   echo "Successfully created ${module_name} module!"
 }
 
-function install_tf_commit_hook() {
+function tf_make_project() {
+  echo "# main.tf\n" >"./main.tf"
+  echo "# variables.tf\n" >"./variables.tf"
+  echo "# outputs.tf\n" >"./outputs.tf"
+  echo "# provider.tf\n" >"./provider.tf"
+
+  tf_install_commit_hook
+}
+
+function tf_install_commit_hook() {
   cat ~/.dotfiles/terraform/terraform-pre-commit-hook.yaml >.pre-commit-config.yaml
+  pre-commit install --install-hooks
 }
