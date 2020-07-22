@@ -9,6 +9,7 @@
 # Editor Configs #
 ##################
 .idea/
+.vscode/
 
 # JS Packages/Files #
 #####################
@@ -82,6 +83,10 @@ terraform.tfstate.d/
 ehthumbs.db
 Thumbs.db
 
+# Python Config Files #
+#######################
+
+.python-version
 
 # Ruby Config Files #
 #####################
