@@ -4,8 +4,9 @@ alias aws_info="aws sts get-caller-identity"
 
 # AWS Vault
 alias av='aws-vault'
-alias avl='aws-vault login'
+alias avreset='aws_reset_session'
+alias avr='aws_reset_session'
+alias avp='avprof'
 
-# SSM start-sessions
-alias gow_sesh='avgow aws ssm start-session --target'
-alias nk_sesh='avnk aws ssm start-session --target'
+alias avl='aws-vault login'
+alias avlogout='open https://console.aws.amazon.com/console/logout!doLogout'
