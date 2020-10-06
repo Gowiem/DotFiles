@@ -1,3 +1,5 @@
+export PATH="/Users/gowiem/.pyenv/shims/:$PATH"
+
 # System Bin Paths
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:./bin:$PATH"
 

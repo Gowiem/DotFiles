@@ -1,16 +1,19 @@
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
-if $(gls &>/dev/null)
-then
+if $(gls &>/dev/null); then
   alias ls="gls -F --color"
   alias l="gls -lAh --color"
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
 
+alias ssh_config="edit ~/.ssh/config"
+
 alias aliases="edit ~/.dotfiles/system/aliases.zsh"
 alias dotfiles="edit ~/.dotfiles"
+
+alias echo_path='echo -e ${PATH//:/\\n}'
 
 alias edit='code'
 
@@ -29,5 +32,7 @@ alias docker_rm_allthethings='docker rmi -f $(docker images -q) && docker rm $(d
 alias lzd='lazydocker'
 
 alias kube='kubectl'
+
+alias pc='pre-commit run -a'
 
 alias stree='open -a /Applications/SourceTree.app'

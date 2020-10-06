@@ -1,14 +1,12 @@
-alias ap=ansible-playbook
-
 # I like clearing the terminal..
 alias c='clear'
 alias cl='clear'
 
 # Basic aliases for editing config files
 alias reload!='. ~/.zshrc'
+alias reload='reload!'
 alias zshconfig="edit $ZSH/zsh/zshrc.symlink"
 alias aliases="edit $ZSH/zsh/aliases.zsh"
-
 
 # grep aliases
 # Coloring
