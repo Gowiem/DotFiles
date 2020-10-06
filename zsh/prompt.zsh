@@ -17,7 +17,7 @@ PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # Right prompt
-RPROMPT='`aws_vault_prompt_info` `terraform_prompt_info` `golang_prompt_info` `python_prompt_info` `node_prompt_info` `ruby_prompt_info` %{$FG[214]%}%n@%m%{$reset_color%}%'
+RPROMPT='`aws_prompt_info` `terraform_prompt_info` `golang_prompt_info` `python_prompt_info` `node_prompt_info` `ruby_prompt_info` %{$FG[214]%}%n@%m%{$reset_color%}%'
 
 ## Python Virtualenv Hooks
 ###########################
@@ -26,7 +26,7 @@ RPROMPT='`aws_vault_prompt_info` `terraform_prompt_info` `golang_prompt_info` `p
 
 # postactivate
 _OLD_RPROMPT="$RPROMPT"
-RPROMPT="%{${fg_bold[white]}%}[env: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%"
+RPROMPT="%{${fg_bold[white]}%}[env: %{${fg[green]}%}$(basename \"$VIRTUAL_ENV\")%{$white%}] %{$FG[214]%}%n@%m%{$reset_color%}%"
 
 #postdeactivate
 RPROMPT="$_OLD_RPROMPT"
@@ -34,9 +34,9 @@ RPROMPT="$_OLD_RPROMPT"
 ## Prompt Function
 ###################
 
-function aws_vault_prompt_info() {
-    if [[ ! -z "$VAULT_PROFILE" ]]; then
-        echo "%{$white%}% [aws: $FG[190]${VAULT_PROFILE}%{$reset_color%}%{$white%}]"
+function aws_prompt_info() {
+    if [[ ! -z "$AWS_PROFILE" ]]; then
+        echo "%{$white%}% [aws: $FG[190]${AWS_PROFILE}%{$reset_color%}%{$white%}]"
     fi
 }
 
@@ -46,14 +46,14 @@ function golang_prompt_info() {
 }
 
 function terraform_prompt_info() {
-    version=$( terraform --version 2>&1 | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2 )
-    
+    version=$(terraform --version 2>&1 | grep "Terraform v" | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2)
+
     if [ -d ".terraform/" ]; then
-        workspace=$( terraform workspace show )
+        workspace=$(terraform workspace show)
     else
         workspace="not_found"
     fi
-    
+
     if [[ "$workspace" == "not_found" ]]; then
         echo "$FG[white][tf: $FG[127]v${version}%{$reset_color%}$FG[white]]"
     else
@@ -86,8 +86,8 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 
 # get the name of the branch we are on
 function git_prompt_info() {
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    ref=$(command git symbolic-ref HEAD 2>/dev/null) ||
+        ref=$(command git rev-parse --short HEAD 2>/dev/null) || return
     echo "$FG[075](branch:$FG[035]${ref#refs/heads/}$FG[214]$(parse_git_dirty)$FG[075])"
 }
 
@@ -101,9 +101,9 @@ parse_git_dirty() {
             SUBMODULE_SYNTAX="--ignore-submodules=dirty"
         fi
         if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
-            GIT_STATUS=$(command git status -s ${SUBMODULE_SYNTAX} -uno 2> /dev/null | tail -n1)
+            GIT_STATUS=$(command git status -s ${SUBMODULE_SYNTAX} -uno 2>/dev/null | tail -n1)
         else
-            GIT_STATUS=$(command git status -s ${SUBMODULE_SYNTAX} 2> /dev/null | tail -n1)
+            GIT_STATUS=$(command git status -s ${SUBMODULE_SYNTAX} 2>/dev/null | tail -n1)
         fi
         if [[ -n $GIT_STATUS ]]; then
             echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
@@ -114,7 +114,6 @@ parse_git_dirty() {
         echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
     fi
 }
-
 
 # cheers, @ehrenmurdick
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
