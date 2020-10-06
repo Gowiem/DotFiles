@@ -1,37 +1,38 @@
-function aws_reset_session() {
-  for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_PROFILE AWS_VAULT VAULT_PROFILE AWS_DEFAULT_REGION AWS_REGION AWS_SECURITY_TOKEN AWS_SESSION_EXPIRATION
-  do
-    unset ${var}
-  done
-}
-
 function aws_print_creds() {
   for var in "AWS_VAULT" "AWS_ACCESS_KEY_ID" "AWS_SESSION_TOKEN"; do
     echo "$var: ${(P)var}"
   done
 }
 
-function avprof() {
-  # Reset AWS Session in case there already is one.
-  aws_reset_session
+function aws_print_all() {
+  for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_PROFILE AWS_VAULT AWS_DEFAULT_REGION AWS_REGION AWS_SECURITY_TOKEN AWS_SESSION_EXPIRATION
+  do
+    echo "$var: ${(P)var}"
+  done
+}
 
-  # Exec the given profile and include the new AWS Creds into the current shell session
-  source <(aws-vault exec $1 --no-session -- sh -c 'export -p')
+function aws_profile() {
+  # Clear existing AWS Session in case there already is one.
+  aws_clear_profile
 
-  # Set VAULT_PROFILE which is used in my Right Prompt
-  export VAULT_PROFILE=$1
   export AWS_PROFILE=$1
 }
 
-function avrefresh() {
-  # Store the current profile name
-  local TEMP=$VAULT_PROFILE
+function aws_profile_session() {
+  # Clear existing AWS Session in case there already is one.
+  aws_clear_profile
 
-  # Reset the current session.
-  aws_reset_session
+  # Exec the given profile and include the new AWS Creds into the current shell session
+  source <(aws-vault exec $1 -- sh -c 'export -p')
 
-  # Sign back into our existing Profile
-  avprof $TEMP
+  export AWS_PROFILE=$1
+}
+
+function aws_clear_profile() {
+  for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_PROFILE AWS_VAULT AWS_DEFAULT_REGION AWS_REGION AWS_SECURITY_TOKEN AWS_SESSION_EXPIRATION
+  do
+    unset ${var}
+  done
 }
 
 function aws_ecr_login() {
