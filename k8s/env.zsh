@@ -1,0 +1,1 @@
+export FLUX_FORWARD_NAMESPACE=flux
