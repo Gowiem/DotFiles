@@ -1,5 +1,5 @@
 alias tf='terraform'
-alias tfyolo='tf apply -auto-approve'
+alias tfp='tfplan'
 alias tfrun='tf apply run.plan'
 alias tfw='tf workspace'
 alias tfws='tf workspace select'

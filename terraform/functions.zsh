@@ -9,7 +9,7 @@ function tf_with_vars() {
 
   local workspace_name=$(terraform workspace show)
   if [[ -f "tfvars/${workspace_name}.tfvars" ]]; then
-    echo "Running terraform plan with ${workspace_name}.tfvars..."
+    echo "Running terraform plan with tfvars/${workspace_name}.tfvars..."
     WORKSPACE_ARG="-var-file=tfvars/${workspace_name}.tfvars"
   fi
 
@@ -31,6 +31,25 @@ function tfplan() {
 
 function tfrefresh() {
   tf_with_vars refresh $*
+}
+
+function tfimport() {
+  tf_with_vars import $*
+}
+
+function tfyolo() {
+  tf_with_vars apply -auto-approve $*
+}
+
+function tf_reinstall_modules() {
+  if [[ ! -d "./.terraform/" ]]; then
+    echo "You're not in a terraform directory!"
+    return
+  fi
+
+  rm -rf ./.terraform/modules
+
+  terraform init
 }
 
 function tf_make_module() {
