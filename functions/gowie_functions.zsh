@@ -17,7 +17,3 @@ function refresh_network() {
   sudo route flush
   sudo ifconfig en1 up
 }
-
-function stree() {
-  open /Applications/SourceTree.app
-}

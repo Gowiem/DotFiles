@@ -29,3 +29,5 @@ alias docker_rm_allthethings='docker rmi -f $(docker images -q) && docker rm $(d
 alias lzd='lazydocker'
 
 alias kube='kubectl'
+
+alias stree='open -a /Applications/SourceTree.app'
