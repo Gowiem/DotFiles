@@ -12,8 +12,7 @@ alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
 
 # Gowie git aliases
 alias gpom='git push origin master'
-alias gplod='git pull origin DEVELOPMENT'
 alias gpu='git pu'
 
 # GitHub CLI aliases
-alias pr='gh pr create'
+alias pr='gp && gh pr create --assignee Gowiem --web'
