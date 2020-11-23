@@ -1,3 +1,30 @@
+function yubi() {
+  if [[ "$1" != "" ]]; then
+    YK_PROFILE=$1
+  else
+    YK_PROFILE=oc # Default
+  fi
+
+  YK_KEY=$(ykman oath code $YK_PROFILE)
+
+  YK_CODE=$(echo $YK_KEY | awk -F "$YK_PROFILE  " '{print $2}')
+
+  echo $YK_CODE | pbcopy
+
+  echo "Yubikey Code is: $YK_CODE"
+
+  YK_KEY=""
+  YK_CODE=""
+}
+
+function aws_help() {
+  if [[ $2 == "" ]]; then
+    open "https://awscli.amazonaws.com/v2/documentation/api/latest/reference/$1/index.html"
+  else
+    open "https://awscli.amazonaws.com/v2/documentation/api/latest/reference/$1/$2.html"
+  fi
+}
+
 function aws_print_creds() {
   for var in "AWS_VAULT" "AWS_ACCESS_KEY_ID" "AWS_SESSION_TOKEN"; do
     echo "$var: ${(P)var}"
@@ -35,6 +62,8 @@ function aws_clear_profile() {
   done
 }
 
+## TODO: Likely no longer needed due to docker-credential-ecr-login
+## Removed if not used
 function aws_ecr_login() {
   local region=""
   local account_id=$(aws_info | jq -r .Account)
