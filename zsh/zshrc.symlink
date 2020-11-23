@@ -1,40 +1,31 @@
+
+
 ## Gowie Zsh Config
 ####################
+
+# Performance profiling ZSH
+# zmodload zsh/zprof
 
 ## Setup direnv (brew install direnv)
 eval "$(direnv hook zsh)"
 
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
-export ZSH_THEME="gow"
-
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-## Source oh-my-zsh?
-# source $HOME/.oh-my-zsh/oh-my-zsh.sh
-
-## Holman/Dotfiles Defaults
-############################
-
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
 
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
-# load the path files
+## Path Files
+##############
 for file in ${(M)config_files:#*/path.zsh}
 do
   source $file
 done
 
-# load everything but the path and completion files
+
+## All ZSH Files Except Completion + Path
+##########################################
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
@@ -44,7 +35,8 @@ done
 autoload -U compinit
 compinit
 
-# load every completion after autocomplete loads
+## Completion Files
+####################
 for file in ${(M)config_files:#*/completion.zsh}
 do
   source $file
