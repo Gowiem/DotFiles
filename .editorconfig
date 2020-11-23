@@ -1,0 +1,30 @@
+#
+# ONLY EDIT THIS FILE IN stuzo/oc-devops
+# This is a templated file from our build-harness process. The template file in
+# oc-devops is the only file that should be updated as it templated across the
+# large majority of our repos.
+#
+
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Override for Makefile
+[{Makefile, makefile, GNUmakefile}]
+indent_style = tab
+indent_size = 4
+
+[Makefile.*]
+indent_style = tab
+indent_size = 4
+
+[*.md]
+max_line_length = 0
+trim_trailing_whitespace = false
