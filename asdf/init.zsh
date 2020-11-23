@@ -1,1 +1,1 @@
-test -s $(brew --prefix asdf) && source $(brew --prefix asdf)/asdf.sh
+test -s /usr/local/opt/asdf && source /usr/local/opt/asdf/asdf.sh
