@@ -1,5 +1,0 @@
-# Name Tab
-# Usage: nt tab_name
-# Simple function to rename the current tab
-
-function nt() { echo -ne "\033]0;"$@"\007" }
