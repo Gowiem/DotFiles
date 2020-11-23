@@ -1,5 +1,7 @@
-alias kube_config='edit ~/.kube/config'
-alias kc='kubectl'
+# Kubectl
+alias k='kubectl'
 alias mk='minikube'
+alias kctx='kubectx'
 
+# Flux
 alias fc='fluxctl'
