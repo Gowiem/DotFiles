@@ -21,6 +21,7 @@ RPS1='${return_code}'
 # Right prompt
 # RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` `golang_prompt_info` `python_prompt_info` `node_prompt_info` `ruby_prompt_info` %{$FG[214]%}%n@%m%{$reset_color%}%'
 RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` %{$FG[214]%}Gowiem@%m%{$reset_color%}%'
+RPROMPT_BAK=$RPROMPT
 # ## Python Virtualenv Hooks
 # ###########################
 # # These need to be copied into the ~/.virtualenvs postactivate/postdeactive scripts
@@ -36,6 +37,14 @@ RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` %{$FG[2
 ## Prompt Function
 ###################
 
+function remove_rprompt() {
+  export RPROMPT=""
+}
+
+function add_rprompt() {
+  export RPROMPT=$RPROMPT_BAK
+}
+
 function aws_prompt_info() {
   if [[ ! -z "$AWS_PROFILE" ]]; then
     echo "%{$white%}% [aws: $FG[190]${AWS_PROFILE}%{$reset_color%}%{$white%}]"
@@ -44,19 +53,10 @@ function aws_prompt_info() {
 
 function kubectx_prompt_info() {
   current=$(kubectl config current-context)
-  if [[ $current == "arn:aws:eks:us-east-1:870004855556:cluster/oc-dev-internal-eks-cluster" ]]; then
-    echo "%{$white%}% [kctx: $FG[205]dev-internal%{$reset_color%}%{$white%}]"
-  elif [[ $current == "arn:aws:eks:us-east-1:246754023808:cluster/oc-prod-internal-eks-cluster" ]]; then
-    echo "%{$white%}% [kctx: $FG[100]prod-internal%{$reset_color%}%{$white%}]"
-  elif [[ $current == "arn:aws:eks:us-east-1:890710746291:cluster/oc-system-eks-cluster" ]]; then
-    echo "%{$white%}% [kctx: $FG[117]system%{$reset_color%}%{$white%}]"
-  elif [[ $current == "arn:aws:eks:us-east-1:582963568243:cluster/oc-stage-cefco-eks-cluster" ]]; then
-    echo "%{$white%}% [kctx: $FG[119]stage-cefco%{$reset_color%}%{$white%}]"
-  elif [[ $current == "arn:aws:eks:us-east-1:803471292467:cluster/oc-prod-cefco-eks-cluster" ]]; then
-    echo "%{$white%}% [kctx: $FG[118]prod-cefco%{$reset_color%}%{$white%}]"
-  else
-    echo "%{$white%}% [kctx: $FG[202]none%{$reset_color%}%{$white%}]"
-  fi
+  # if [[ $current == "arn:aws:eks:us-east-1:xxxxxxxxxx:cluster/cluster-blah" ]]; then
+  # else
+    echo "%{$white%}% [kctx: $FG[202]$current%{$reset_color%}%{$white%}]"
+  # fi
 }
 
 function golang_prompt_info() {
@@ -64,20 +64,21 @@ function golang_prompt_info() {
   echo "[go: %{$FG[222]%}${go_ver}%{$reset_color%}%{$white%}]"
 }
 
+# Terraform version is too damn slow. It's sad.
 function terraform_prompt_info() {
-  version=$(terraform --version 2>&1 | grep "Terraform v" | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2)
+  # version=$(terraform --version 2>&1 | grep "Terraform v" | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2)
 
-  if [ -d ".terraform/" ]; then
-    workspace=$(terraform workspace show)
-  else
-    workspace="not_found"
-  fi
+  # if [ -d ".terraform/" ]; then
+  #   workspace=$(terraform workspace show)
+  # else
+  #   workspace="not_found"
+  # fi
 
-  if [[ "$workspace" == "not_found" ]]; then
-    echo "$FG[white][tf: $FG[127]v${version}%{$reset_color%}$FG[white]]"
-  else
-    echo "$FG[white][tf: $FG[127]v${version}@${workspace}%{$reset_color%}$FG[white]]"
-  fi
+  # if [[ "$workspace" == "not_found" ]]; then
+  #   echo "$FG[white][tf: $FG[127]v${version}%{$reset_color%}$FG[white]]"
+  # else
+  #   echo "$FG[white][tf: $FG[127]v${version}@${workspace}%{$reset_color%}$FG[white]]"
+  # fi
 }
 
 function python_prompt_info() {

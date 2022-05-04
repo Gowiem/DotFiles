@@ -10,12 +10,12 @@ function tf_with_vars() {
   local workspace_name=$(terraform workspace show)
   if [[ -f "tfvars/${workspace_name}.tfvars" ]]; then
     echo "Running terraform $cmd with tfvars/${workspace_name}.tfvars..."
-    WORKSPACE_ARG="-var-file=tfvars/${workspace_name}.tfvars"
+    local WORKSPACE_ARG="-var-file=tfvars/${workspace_name}.tfvars"
   fi
 
   if [[ -f "tfvars/secrets.tfvars" ]]; then
     echo "Running terraform $cmd with secrets.tfvars..."
-    SECRETS_ARG="-var-file=tfvars/secrets.tfvars"
+    local SECRETS_ARG="-var-file=tfvars/secrets.tfvars"
   fi
 
   if [[ "$cmd" == "plan" ]]; then
@@ -77,6 +77,7 @@ function tf_make_project() {
 }
 
 function tf_install_commit_hook() {
+
   cat ~/.dotfiles/terraform/terraform-pre-commit-hook.yaml >.pre-commit-config.yaml
   pre-commit install --install-hooks
 }
