@@ -53,10 +53,12 @@ function aws_prompt_info() {
 
 function kubectx_prompt_info() {
   current=$(kubectl config current-context)
-  # if [[ $current == "arn:aws:eks:us-east-1:xxxxxxxxxx:cluster/cluster-blah" ]]; then
-  # else
+  if [[ "$current" ==  *"cluster/"* ]]; then
+    cluster="$(cut -d "/" -f2 <<< $current)"
+    echo "%{$white%}% [kctx: $FG[202]$cluster%{$reset_color%}%{$white%}]"
+  else
     echo "%{$white%}% [kctx: $FG[202]$current%{$reset_color%}%{$white%}]"
-  # fi
+  fi
 }
 
 function golang_prompt_info() {
