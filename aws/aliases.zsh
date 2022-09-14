@@ -2,6 +2,7 @@
 alias aws_creds="edit ~/.aws/credentials"
 alias aws_config="edit ~/.aws/config"
 alias aws_info="aws sts get-caller-identity"
+alias awsid='aws sts get-caller-identity --output text && aws iam list-account-aliases --output text && aws sts get-caller-identity --query "Account" --output text'
 
 # AWS Vault
 alias av='aws-vault'
