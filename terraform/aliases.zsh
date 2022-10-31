@@ -1,5 +1,5 @@
 alias tf='terraform'
-alias tfp='tfplan'
+alias tfp='tf plan'
 alias tfrun='tf apply run.plan'
 alias tfr='tf apply run.plan'
 alias tfw='tf workspace'
