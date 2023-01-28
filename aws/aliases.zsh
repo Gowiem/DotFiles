@@ -15,6 +15,7 @@ alias avlogout='open https://console.aws.amazon.com/console/logout!doLogout'
 
 # AWS Profile
 alias ap='aws_profile'
+alias apd='aws_profile default'
 alias aps='aws_profile_session'
 alias apclear='aws_clear_profile'
 alias apc='aws_clear_profile'
