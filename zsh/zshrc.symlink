@@ -7,7 +7,7 @@
 # zmodload zsh/zprof
 
 ## Setup direnv (brew install direnv)
-eval "$(direnv hook zsh)"
+eval "$(/opt/homebrew/bin/direnv hook zsh)"
 
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -43,3 +43,7 @@ do
 done
 
 unset config_files
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/gowiem/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

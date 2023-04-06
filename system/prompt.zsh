@@ -14,7 +14,7 @@ eval orange='$FG[214]'
 eval lightBlue='$FG[075]'
 eval white='$FG[white]'
 
-PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info` $FG[105]%(!.#.»)%{$reset_color%} '
+PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info`%{$reset_color%} `aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` $FG[105]%(!.#.»)%{$reset_color%}'
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
@@ -48,11 +48,16 @@ function add_rprompt() {
 function aws_prompt_info() {
   if [[ ! -z "$AWS_PROFILE" ]]; then
     echo "%{$white%}% [aws: $FG[190]${AWS_PROFILE}%{$reset_color%}%{$white%}]"
+  else
+    echo "%{$white%}% [aws: $FG[190]default%{$reset_color%}%{$white%}]"
   fi
 }
 
+# bash check exit status code
+# https://stackoverflow.com/questions/1221833/bash-prompt-command-to-show-exit-code-of-previous-command
+
 function kubectx_prompt_info() {
-  current=$(kubectl config current-context)
+  current=$(kubectl config current-context 2> /dev/null)
   if [[ "$current" ==  *"cluster/"* ]]; then
     cluster="$(cut -d "/" -f2 <<< $current)"
     echo "%{$white%}% [kctx: $FG[202]$cluster%{$reset_color%}%{$white%}]"

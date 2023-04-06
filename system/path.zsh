@@ -10,6 +10,9 @@ export PATH="$ZSH/bin:$PATH"
 export PATH="/Users/gowiem/.local/bin:${PATH}"
 export PATH="~/bin:$PATH"
 
+# Brew
+export PATH="/opt/homebrew/bin/:$PATH"
+
 # Rust
 export PATH="$PATH:/Users/gowiem/.cargo/bin:"
 

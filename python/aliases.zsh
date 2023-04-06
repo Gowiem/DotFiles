@@ -1,2 +1,2 @@
-# virtualevnwrapper deactivate aliases
-alias workoff="deactivate"
+alias python='python3'
+alias pip='pip3'
