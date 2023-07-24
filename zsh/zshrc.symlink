@@ -7,7 +7,9 @@
 # zmodload zsh/zprof
 
 ## Setup direnv (brew install direnv)
-eval "$(/opt/homebrew/bin/direnv hook zsh)"
+if [ "$(uname -s)" == "Darwin" ]; then
+  eval "$(/opt/homebrew/bin/direnv hook zsh)"
+fi
 
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -44,8 +46,11 @@ done
 
 unset config_files
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/gowiem/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+if [ "$(uname -s)" == "Darwin" ] then
+  ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+  export PATH="/Users/gowiem/.rd/bin:$PATH"
+  ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+  # Generated for envman. Do not edit.
+  [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+fi
