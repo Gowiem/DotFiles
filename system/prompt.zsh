@@ -14,13 +14,14 @@ eval orange='$FG[214]'
 eval lightBlue='$FG[075]'
 eval white='$FG[white]'
 
-PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info`%{$reset_color%} `aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` $FG[105]%(!.#.»)%{$reset_color%}'
+PROMPT='%{$reset_color%} $FG[032]%c `git_prompt_info`%{$reset_color%} $FG[105]%(!.#.»)%{$reset_color%}'
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # Right prompt
 # RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` `golang_prompt_info` `python_prompt_info` `node_prompt_info` `ruby_prompt_info` %{$FG[214]%}%n@%m%{$reset_color%}%'
-RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` %{$FG[214]%}Gowiem@%m%{$reset_color%}%'
+# RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` %{$FG[214]%}Gowiem@%m%{$reset_color%}%'
+RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info`'
 RPROMPT_BAK=$RPROMPT
 # ## Python Virtualenv Hooks
 # ###########################
@@ -61,6 +62,8 @@ function kubectx_prompt_info() {
   if [[ "$current" ==  *"cluster/"* ]]; then
     cluster="$(cut -d "/" -f2 <<< $current)"
     echo "%{$white%}% [kctx: $FG[202]$cluster%{$reset_color%}%{$white%}]"
+  elif [[ "$current" ==  "" ]]; then
+    echo "%{$white%}% [kctx: $FG[202]none%{$reset_color%}%{$white%}]"
   else
     echo "%{$white%}% [kctx: $FG[202]$current%{$reset_color%}%{$white%}]"
   fi
@@ -73,19 +76,19 @@ function golang_prompt_info() {
 
 # Terraform version is too damn slow. It's sad.
 function terraform_prompt_info() {
-  # version=$(terraform --version 2>&1 | grep "Terraform v" | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2)
+  version=$(terraform --version 2>&1 | grep "Terraform v" | cut -d ' ' -f 2 | head -n 1 | cut -d 'v' -f 2)
 
-  # if [ -d ".terraform/" ]; then
-  #   workspace=$(terraform workspace show)
-  # else
-  #   workspace="not_found"
-  # fi
+  if [ -d ".terraform/" ]; then
+    workspace=$(terraform workspace show)
+  else
+    workspace="not_found"
+  fi
 
-  # if [[ "$workspace" == "not_found" ]]; then
-  #   echo "$FG[white][tf: $FG[127]v${version}%{$reset_color%}$FG[white]]"
-  # else
-  #   echo "$FG[white][tf: $FG[127]v${version}@${workspace}%{$reset_color%}$FG[white]]"
-  # fi
+  if [[ "$workspace" == "not_found" ]]; then
+    echo "$FG[white][tf: $FG[127]v${version}%{$reset_color%}$FG[white]]"
+  else
+    echo "$FG[white][tf: $FG[127]v${version}@${workspace}%{$reset_color%}$FG[white]]"
+  fi
 }
 
 function python_prompt_info() {
