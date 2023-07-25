@@ -35,8 +35,9 @@ alias pc='pre-commit run -a'
 
 alias stree='open -a /Applications/SourceTree.app'
 
-alias del='rmtrash'
-alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
+# rmtrash isn't working and this is driving me nuts.
+# alias del='rmtrash'
+# alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 
 # Pipe my public key to my clipboard.
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo '=> Public key copied to pasteboard.'"
