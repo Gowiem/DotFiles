@@ -21,8 +21,8 @@ RPS1='${return_code}'
 # Right prompt
 # RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` `golang_prompt_info` `python_prompt_info` `node_prompt_info` `ruby_prompt_info` %{$FG[214]%}%n@%m%{$reset_color%}%'
 # RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info` %{$FG[214]%}Gowiem@%m%{$reset_color%}%'
-RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info`'
-RPROMPT_BAK=$RPROMPT
+# RPROMPT='`aws_prompt_info` `kubectx_prompt_info` `terraform_prompt_info`'
+# RPROMPT_BAK=$RPROMPT
 # ## Python Virtualenv Hooks
 # ###########################
 # # These need to be copied into the ~/.virtualenvs postactivate/postdeactive scripts

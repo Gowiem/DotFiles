@@ -1,7 +1,4 @@
-atmos_plan() {
-  atmos terraform plan $1 --stack $2
-}
 
-atmos_apply() {
-  atmos terraform apply $1 --stack $2 --from-plan
-}
+echo "Loading custom Gowie Geodesic Overrides..."
+
+git config --global --add safe.directory \*

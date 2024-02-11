@@ -1,4 +1,4 @@
-# export PATH="/Users/gowiem/.pyenv/shims/:$PATH"
+# export PATH="$HOME/.pyenv/shims/:$PATH"
 
 ## Bin Paths
 ###################
@@ -7,14 +7,14 @@
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:./bin:$PATH"
 
 export PATH="$ZSH/bin:$PATH"
-export PATH="/Users/gowiem/.local/bin:${PATH}"
-export PATH="~/bin:$PATH"
+export PATH="$HOME/.local/bin:${PATH}"
+export PATH="$HOME/bin:$PATH"
 
 # Brew
 export PATH="/opt/homebrew/bin/:$PATH"
 
 # Rust
-export PATH="$PATH:/Users/gowiem/.cargo/bin:"
+export PATH="$PATH:$HOME/.cargo/bin:"
 
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin:"
