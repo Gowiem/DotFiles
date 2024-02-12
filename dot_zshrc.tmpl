@@ -1,0 +1,72 @@
+## Gowie Zsh Config
+####################
+
+{{ if eq .chezmoi.os "darwin" -}}
+## Mac
+##############
+
+{{ range .pathenv.darwin -}}
+export PATH="{{ . }}:$PATH"
+{{ end -}}
+
+{{ range .env.darwin -}}
+export {{ .name }}="{{ .value }}"
+{{ end -}}
+
+{{ range .aliases.darwin -}}
+alias {{ .alias }}="{{ .command }}"
+{{ end -}}
+
+{{ else if eq .chezmoi.os "linux" -}}
+## Linux
+##############
+
+{{ range .pathenv.linux -}}
+export PATH="{{ . }}:$PATH"
+{{ end -}}
+
+{{ range .env.linux -}}
+export {{ .name }}="{{ .value }}"
+{{ end -}}
+
+{{ range .aliases.linux -}}
+alias {{ .alias }}="{{ .command }}"
+{{ end -}}
+
+{{ else if eq .chezmoi.os "windows" -}}
+## Windows
+##############
+
+{{ range .pathenv.windows -}}
+export PATH="{{ . }}:$PATH"
+{{ end -}}
+
+{{ range .env.windows -}}
+export {{ .name }}="{{ .value }}"
+{{ end -}}
+
+{{ range .aliases.windows -}}
+alias {{ .alias }}="{{ .command }}"
+{{ end -}}
+
+{{ end -}} # End if OS
+
+## All
+##############
+{{ range .pathenv.all -}}
+export PATH="{{ . }}:$PATH"
+{{ end -}}
+
+{{ range .env.all -}}
+export {{ .name }}="{{ .value }}"
+{{ end -}}
+
+{{ range .aliases.all -}}
+alias {{ .alias }}="{{ .command }}"
+{{ end -}}
+
+# Load all functions + raw files
+for file in $(chezmoi source-path)/loaders/**/*(.);
+do
+  source $file
+done

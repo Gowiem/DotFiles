@@ -1,1 +1,0 @@
-brew install --cask sekey

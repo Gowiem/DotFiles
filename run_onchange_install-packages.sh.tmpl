@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ -n "$CODESPACES" ]; then
+    log "Exit. Skip run_once_install for codespaces."
+    exit
+fi
+
+{{ if eq .chezmoi.os "linux" -}}
+echo "***** Installing Linux Packages"
+
+
+
+{{ else if eq .chezmoi.os "darwin" -}}
+echo "***** Installing Mac Packages"
+
+if test ! $(which brew); then
+  echo "*****  Installing Homebrew for you."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
+
+{{ else if eq .chezmoi.os "windows" -}}
+echo "***** Installing Windows Packages (Just kidding)"
+
+{{ end -}}

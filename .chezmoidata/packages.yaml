@@ -1,0 +1,15 @@
+packages:
+  darwin:
+    brews:
+    - gnupg
+    - aquaproj/aqua/aqua
+    - ykman
+    - gh
+    # - trunk-io
+    - grc
+    - coreutils
+
+    casks:
+    #  - visual-studio-code
+     - rancher
+     - gpg-suite

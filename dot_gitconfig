@@ -1,0 +1,61 @@
+[user]
+name = Matt Gowie
+email = matt@masterpoint.io
+signingkey = 62958A609CCCEE72
+
+[core]
+excludesfile = $HOME/.global_gitignore
+editor = code --wait
+
+[alias]
+co = checkout
+br = branch
+ci = commit
+st = status
+
+[init]
+defaultBranch = main
+
+[commit]
+gpgsign = true
+
+[push]
+autoSetupRemote = true
+
+[pull]
+rebase = false
+
+[submodule]
+ignore = all
+
+[safe]
+directory = *
+
+[color]
+branch = auto
+diff = auto
+status = auto
+
+[color "branch"]
+current = yellow reverse
+local = yellow
+remote = green
+
+[color "diff"]
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+
+[color "status"]
+added = yellow
+changed = green
+untracked = cyan
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+required = true
+process = git-lfs filter-process
+
+

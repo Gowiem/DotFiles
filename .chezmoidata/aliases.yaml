@@ -1,0 +1,176 @@
+aliases:
+  all:
+    # One offs
+    - alias: c
+      command: clear
+    - alias: cl
+      command: clear
+    - alias: t
+      command: task
+    - alias: edit
+      command: code
+    - alias: reload!
+      command: . ~/.zshrc
+    - alias: reload
+      command: reload!
+    - alias: ports
+      command: netstat -tulanp
+    - alias: cd..
+      command: cd ..
+    - alias: ..
+      command: cd ..
+    - alias: ...
+      command: cd ../../
+    - alias: h
+      command: history
+    - alias: path
+      command: echo -e ${PATH//:/\\n}
+    - alias: now
+      command: date +%T
+    - alias: nowdate
+      command: date +"%d-%m-%Y"
+    - alias: reboot
+      command: sudo /sbin/reboot
+    - alias: poweroff
+      command: sudo /sbin/poweroff
+    - alias: halt
+      command: sudo /sbin/halt
+    - alias: shutdown
+      command: sudo /sbin/shutdown
+
+    # Editor shortcuts
+    - alias: zsh_config
+      command: edit $(chezmoi source-path)/dot_zshrc.tmpl
+    - alias: ssh_config
+      command: edit ~/.ssh/config
+    - alias: kube_config
+      command: edit ~/.kube/config
+    - alias: aws_config
+      command: edit ~/.aws/config
+    - alias: aliases
+      command: edit $(chezmoi source-path)/.chezmoidata/aliases.yaml
+    - alias: dotfiles
+      command: edit $(chezmoi source-path)
+
+    # AWS Aliases
+    - alias: aws_creds
+      command: edit ~/.aws/credentials
+    - alias: aws_config
+      command: edit ~/.aws/config
+    - alias: aws_info
+      command: aws sts get-caller-identity
+    - alias: awsid
+      command: aws sts get-caller-identity --output text && aws iam list-account-aliases --output text && aws sts get-caller-identity --query Account --output text
+    - alias: ap
+      command: aws_profile
+    - alias: apd
+      command: aws_profile default
+    - alias: aps
+      command: aws_profile_session
+    - alias: apclear
+      command: aws_clear_profile
+    - alias: apc
+      command: aws_clear_profile
+
+    # Git Aliases
+    - alias: pr # My favorite of them all 💯
+      command: git push origin HEAD && gh pr create --assignee Gowiem --web
+    - alias: gl
+      command: git pull --prune
+    - alias: glog
+      command: "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+    - alias: gp
+      command: git push origin HEAD
+    - alias: gd
+      command: git diff
+    - alias: gc
+      command: git commit
+    - alias: gca
+      command: git commit -a
+    - alias: gco
+      command: git checkout
+    - alias: gb
+      command: git branch
+    - alias: gs
+      command: git status -sb # upgrade your git if -sb breaks for you. it's fun
+    - alias: git_recent_branches
+      command: git branch --sort=-committerdate | head -n 10
+    - alias: gpom
+      command: git push origin master
+    - alias: gpf
+      command: git push -f origin HEAD
+    - alias: gri
+      command: git rebase -i origin/develop
+    - alias: git_clean_up_master
+      command: git checkout master && git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d
+    - alias: git_clean_up_develop
+      command: git checkout develop && git branch --merged develop | grep -v "\* develop" | xargs -n 1 git branch -d
+    - alias: git_clean_up_main
+      command: git checkout main && git branch --merged main | grep -v "\* main" | xargs -n 1 git branch -d
+    - alias: git_clean_up_head
+      command: git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+    - alias: git_empty_commit
+      command: git commit --allow-empty -m "Empty Commit"
+
+    # Terraform Aliases
+    - alias: tf
+      command: terraform
+    - alias: tfp
+      command: tfplan
+    - alias: tfrun
+      command: tf apply run.plan
+    - alias: tfr
+      command: tf apply run.plan
+    - alias: tfw
+      command: tf workspace
+    - alias: tfws
+      command: tf workspace select
+    - alias: tfi
+      command: tf init
+    - alias: tfout
+      command: tf output
+
+    ## Docker
+    ##########
+
+    - alias: d
+      command: docker
+    - alias: drun
+      command: docker run -it --rm
+    - alias: dexec
+      command: docker exec -it
+    - alias: dcomp
+      command: docker-compose
+    - alias: docker_rm_images
+      command: docker rmi -f $(docker images -f dangling=true -q)
+    - alias: docker_rm_containers
+      command: docker rm $(docker ps -a -f status=exited -q)
+    - alias: docker_rm_dangling
+      command: docker rmi -f $(docker images -f dangling=true -q) && docker rm $(docker ps -a -f status=exited -q)
+    - alias: docker_rm_allthethings
+      command: docker rmi -f $(docker images -q) && docker rm $(docker ps -a -q)
+
+    ## Kubernetes
+    #############
+    - alias: k
+      command: kubectl
+    - alias: mk
+      command: minikube
+    - alias: kctx
+      command: kubectx
+    - alias: fc
+      command: fluxctl
+
+
+  darwin:
+    - alias: tailscale
+      command: /Applications/Tailscale.app/Contents/MacOS/Tailscale
+
+    # Python
+    - alias: python
+      command: python3
+    - alias: pip
+      command: pip3
+
+  linux: []
+  windows: []
