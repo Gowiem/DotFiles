@@ -37,6 +37,8 @@ aliases:
       command: sudo /sbin/halt
     - alias: shutdown
       command: sudo /sbin/shutdown
+    - alias: chez
+      command: chezmoi
 
     # Editor shortcuts
     - alias: zsh_config
@@ -141,14 +143,6 @@ aliases:
       command: docker exec -it
     - alias: dcomp
       command: docker-compose
-    - alias: docker_rm_images
-      command: docker rmi -f $(docker images -f dangling=true -q)
-    - alias: docker_rm_containers
-      command: docker rm $(docker ps -a -f status=exited -q)
-    - alias: docker_rm_dangling
-      command: docker rmi -f $(docker images -f dangling=true -q) && docker rm $(docker ps -a -f status=exited -q)
-    - alias: docker_rm_allthethings
-      command: docker rmi -f $(docker images -q) && docker rm $(docker ps -a -q)
 
     ## Kubernetes
     #############
