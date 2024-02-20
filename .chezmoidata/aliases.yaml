@@ -23,8 +23,6 @@ aliases:
       command: cd ../../
     - alias: h
       command: history
-    - alias: path
-      command: echo -e ${PATH//:/\\n}
     - alias: now
       command: date +%T
     - alias: nowdate
@@ -39,6 +37,8 @@ aliases:
       command: sudo /sbin/shutdown
     - alias: chez
       command: chezmoi
+    - alias: tboxrun
+      command: task taskit:toolbox:run
 
     # Editor shortcuts
     - alias: zsh_config
@@ -154,7 +154,6 @@ aliases:
       command: kubectx
     - alias: fc
       command: fluxctl
-
 
   darwin:
     - alias: tailscale

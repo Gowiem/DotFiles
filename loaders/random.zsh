@@ -19,11 +19,15 @@ function nt() {
   echo -ne "\033]0;"$@"\007"
 }
 
+function printpath() {
+  printf ${PATH//:/\\n}\n
+}
+
 # credit: http://nparikh.org/notes/zshrc.txt
 # Usage: extract <file>
 # Description: extracts archived files / mounts disk images
 # Note: .dmg/hdiutil is Mac OS X-specific.
-extract() {
+function extract() {
   if [ -f $1 ]; then
     case $1 in
     *.tar.bz2) tar -jxvf $1 ;;
