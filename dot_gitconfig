@@ -5,7 +5,7 @@ signingkey = 62958A609CCCEE72
 
 [core]
 excludesfile = $HOME/.global_gitignore
-editor = code --wait
+editor = cursor --wait
 
 [alias]
 co = checkout
@@ -57,5 +57,3 @@ clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
 required = true
 process = git-lfs filter-process
-
-
