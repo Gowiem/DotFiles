@@ -3,7 +3,7 @@
 # https://aquaproj.github.io/
 registries:
   - type: standard
-    ref: v4.131.1 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.161.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: twpayne/chezmoi@v2.46.0
   - name: Schniz/fnm@v1.35.1
@@ -12,3 +12,7 @@ packages:
   - name: direnv/direnv@v2.33.0
   - name: opentofu/opentofu@v1.6.1
   - name: hashicorp/terraform@v1.7.3
+  - name: jesseduffield/lazygit@v0.41.0
+  - name: terraform-linters/tflint@v0.50.3
+  - name: charmbracelet/glow@v1.5.1
+  - name: charmbracelet/mods@v1.2.2

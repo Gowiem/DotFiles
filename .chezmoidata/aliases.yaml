@@ -7,6 +7,8 @@ aliases:
       command: clear
     - alias: t
       command: task
+    - alias: code
+      command: cursor
     - alias: edit
       command: code
     - alias: reload!
@@ -39,6 +41,8 @@ aliases:
       command: chezmoi
     - alias: tboxrun
       command: task taskit:toolbox:run
+    - alias: lg
+      command: lazygit
 
     # Editor shortcuts
     - alias: zsh_config
