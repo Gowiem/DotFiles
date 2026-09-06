@@ -120,7 +120,7 @@ aliases:
 
     # Terraform Aliases
     - alias: tf
-      command: terraform
+      command: tofu
     - alias: tfp
       command: tfplan
     - alias: tfrun
@@ -159,9 +159,37 @@ aliases:
     - alias: fc
       command: fluxctl
 
+    ## One Password
+    - alias: oprun
+      command: op run --env-file=./.env
+
+    - alias: ai
+      command: op account get --format=json > /dev/null 2>&1; op run --env-file=.env -- script -q /dev/null claude --enable-auto-mode
+
+    - alias: herd
+      command: op account get --format=json > /dev/null 2>&1; op run --no-masking --env-file=.env -- claude --enable-auto-mode
+
+    - alias: assistant
+      command: ai
+
   darwin:
     - alias: tailscale
       command: /Applications/Tailscale.app/Contents/MacOS/Tailscale
+
+    # Launch Claude Desktop with ai-assistant/.env secrets injected (desktop equivalent of `ai`).
+    # Quits any env-less instance first (Dock launches skip the shell env), then relaunches the
+    # app binary under `op run` so the app + its MCP servers inherit the resolved secrets.
+    - alias: ai-app
+      command: op account get --format=json > /dev/null 2>&1; osascript -e 'quit app \"Claude\"' 2>/dev/null; while pgrep -qx Claude; do sleep 0.2; done; op run --env-file=/Users/gowiem/Workspace/Side-Projects/ai-assistant/.env -- /Applications/Claude.app/Contents/MacOS/Claude > /dev/null 2>&1 & disown
+
+    - alias: claudemcpconf
+      command: code ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+    # MasterpointOps repo: resolve its .env (1Password references only) for one command,
+    # e.g. `mpops npm run dev`, `mpops npm run verify`. Same shape as `ai`, fixed path so it
+    # works from any directory. The trailing space lets zsh alias-expand the next word too.
+    - alias: mpops
+      command: "op account get --format=json > /dev/null 2>&1; op run --env-file=/Users/gowiem/Workspace/Side-Projects/masterpoint-ops/.env -- "
 
     # Python
     - alias: python
