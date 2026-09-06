@@ -177,10 +177,11 @@ aliases:
       command: /Applications/Tailscale.app/Contents/MacOS/Tailscale
 
     # Launch Claude Desktop with ai-assistant/.env secrets injected (desktop equivalent of `ai`).
-    # Quits any env-less instance first (Dock launches skip the shell env), then relaunches the
-    # app binary under `op run` so the app + its MCP servers inherit the resolved secrets.
+    # The launcher script quits any env-less instance, resolves .env once, relaunches the app
+    # binary with the secrets, and is loud on failure (log + notification). Also exposes
+    # `ai-app status|check|log`. Replaced the inline one-liner on 2026-09-06.
     - alias: ai-app
-      command: op account get --format=json > /dev/null 2>&1; osascript -e 'quit app \"Claude\"' 2>/dev/null; while pgrep -qx Claude; do sleep 0.2; done; op run --env-file=/Users/gowiem/Workspace/Side-Projects/ai-assistant/.env -- /Applications/Claude.app/Contents/MacOS/Claude > /dev/null 2>&1 & disown
+      command: $HOME/Workspace/Side-Projects/ai-assistant/scripts/ai-app.sh
 
     - alias: claudemcpconf
       command: code ~/Library/Application\ Support/Claude/claude_desktop_config.json
